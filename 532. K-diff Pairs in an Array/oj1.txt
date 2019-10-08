@@ -1,0 +1,16 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        if (k < 0)
+            return 0;
+        Set<Integer> raw = new HashSet<>();
+        Set<Integer> diff = new HashSet<>();
+        for (int num : nums) {
+            if(raw.contains(num-k))
+                diff.add(num-k);
+            if(raw.contains(num+k))
+                diff.add(num);
+            raw.add(num);
+        }
+        return diff.size();
+    }
+}

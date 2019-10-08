@@ -1,0 +1,21 @@
+class Solution {
+    public int findPairs(int[] nums, int k) {
+        Arrays.sort(nums);
+        int count =0;
+        Map<Integer,Boolean> map = new HashMap<>();
+        if(k<0) return 0;
+        for(int num:nums){
+            if(map.containsKey(num-k)&&map.get(num-k)){
+                count++;
+                map.put(num-k,false);
+            }
+            if(map.containsKey(num+k)&&map.get(num+k)){
+                count++;
+                map.put(num+k,false);
+            }
+            if(!map.containsKey(num))
+                map.put(num,true);
+        }
+        return count;
+    }
+}
