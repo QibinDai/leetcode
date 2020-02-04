@@ -1,0 +1,20 @@
+//Runtime: 1 ms, faster than 100.00% of Java online submissions for Smallest Range I.
+//Memory Usage: 38.4 MB, less than 100.00% of Java online submissions for Smallest Range I.
+class Solution {
+    public int smallestRangeI(int[] A, int K) {
+        if (K >= 5000)
+            return 0;
+        int min = 10000;
+        int max = 0;
+        for (int a : A) {
+            if (a < min)
+                min = a;
+            if (a > max)
+                max = a;
+        }
+        if(max - min <2*K)
+            return 0;
+        else
+            return max - min -2*K;
+    }
+}
